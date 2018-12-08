@@ -1,0 +1,16 @@
+language: go
+go:
+  - 1.11.x
+install:
+  - go get github.com/mattn/goveralls
+script:
+  - go test -v -covermode=count -coverprofile=coverage.out ./...
+  - $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
+  - echo $KEY > key
+  - ssh -i key $USERNAME@$SERVER
+  - cd $PATH
+  - rm -rf feed-backend
+  - git clone $GH_REF
+  - cd feed-backend
+  - go build
+  - nohup ./feed & >> log

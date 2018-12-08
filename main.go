@@ -27,7 +27,7 @@ func main() {
 	http.HandleFunc("/list", server.Func(db, handler.ListFeed))
 	http.HandleFunc("/delete_one", server.Func(db, handler.DeleteFeed))
 	http.HandleFunc("/update_one", server.Func(db, handler.UpdateFeed))
-	log.Fatal(http.ListenAndServe("0.0.0.0:80", nil))
+	log.Fatal(http.ListenAndServe("0.0.0.0:8888", nil))
 	//log.Fatal(http.ListenAndServeTLS("0.0.0.0:80", "ca.crt","ca.key", nil))
 }
 
