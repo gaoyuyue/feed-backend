@@ -8,9 +8,9 @@ script:
   - $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
   - echo $KEY > key
   - ssh -i key $USERNAME@$SERVER
-  - cd $PATH
+  - cd $GOPATH/github.com/gaoyuyue
   - rm -rf feed-backend
-  - git clone $GH_REF
+  - git clone https://github.com/gaoyuyue/feed-backend.git
   - cd feed-backend
   - go build
   - nohup ./feed & >> log
