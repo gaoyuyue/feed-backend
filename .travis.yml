@@ -18,4 +18,4 @@ addons:
   ssh_known_hosts:
     - 139.199.123.242
 after_success:
-  - ssh ubuntu@139.199.123.242 "./deploy_feed.sh"
+  - ssh ubuntu@139.199.123.242 'source /etc/profile && ./deploy_feed.sh'
