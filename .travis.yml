@@ -13,7 +13,9 @@ script:
 before_install:
   - openssl aes-256-cbc -K $encrypted_8ddb9e2a79ff_key -iv $encrypted_8ddb9e2a79ff_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
+  - echo -e "Host 139.199.123.242\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 addons:
-  ssh_known_hosts: 139.199.123.242:22
+  ssh_known_hosts:
+    - 139.199.123.242
 after_success:
-  - ssh ubuntu@139.199.123.242 -p 22 "./deploy_feed.sh"
+  - ssh ubuntu@139.199.123.242 "./deploy_feed.sh"
